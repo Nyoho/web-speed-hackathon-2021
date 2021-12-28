@@ -2,6 +2,7 @@ const postcssImport = require('postcss-import');
 const postcssPresetEnv = require('postcss-preset-env');
 const tailwindcss = require('tailwindcss');
 const cssnano = require('cssnano');
+const purgecss = require('@fullhuman/postcss-purgecss')
 
 module.exports = {
   plugins: [
@@ -17,5 +18,9 @@ module.exports = {
         },
       }]
     }),
+    purgecss({
+      content: ['./**/*.html', './src/**/*.jsx'],
+      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || []
+    })
   ],
 };

@@ -81,6 +81,9 @@ const config = {
       path: false,
     },
   },
+  optimization: {
+    minimize: true,
+  },
 };
 
 module.exports = config;
